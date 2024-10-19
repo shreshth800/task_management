@@ -25,11 +25,15 @@ export default function Home() {
   const [taskToEdit, setTaskToEdit] = useState<Task | undefined>(undefined);
 
   const saveTaskToLocalStorage = (task: Task) => {
-    localStorage.setItem(`task_${task.id}`, JSON.stringify(task));
+    if (typeof window !== "undefined") {
+      localStorage.setItem(`task_${task.id}`, JSON.stringify(task));
+    }
   };
 
   const removeTaskFromLocalStorage = (id: number) => {
-    localStorage.removeItem(`task_${id}`);
+    if (typeof window !== "undefined") {
+      localStorage.removeItem(`task_${id}`);
+    }
   };
 
   const addOrUpdateTask = (task: Task) => {
@@ -41,6 +45,7 @@ export default function Home() {
     saveTaskToLocalStorage(task);
     setTaskToEdit(undefined);
   };
+
   const deleteTask = (id: number) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
     removeTaskFromLocalStorage(id);
