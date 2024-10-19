@@ -20,7 +20,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Task Form Styles */
 form {
   display: flex;
   flex-direction: column;
@@ -54,13 +53,11 @@ button:hover {
   background-color: #218838;
 }
 
-/* Task List Styles */
 .task-list {
   max-width: 600px;
   margin: 20px auto;
 }
 
-/* Task Item Styles */
 .task-item {
   display: flex;
   justify-content: space-between;
@@ -72,15 +69,15 @@ button:hover {
 }
 
 .task-item.high {
-  background-color: #ffcccc; /* Red for high priority */
+  background-color: #ffcccc;
 }
 
 .task-item.medium {
-  background-color: #ffffcc; /* Yellow for medium priority */
+  background-color: #ffffcc;
 }
 
 .task-item.low {
-  background-color: #ccffcc; /* Green for low priority */
+  background-color: #ccffcc;
 }
 
 .completed {

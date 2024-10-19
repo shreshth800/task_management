@@ -9,6 +9,12 @@ interface TaskListProps {
   onToggleComplete: (id: number) => void;
 }
 
+const priorityOrder = {
+  high: 3,
+  medium: 2,
+  low: 1,
+};
+
 const TaskList: React.FC<TaskListProps> = ({
   tasks,
   onEdit,
@@ -16,9 +22,9 @@ const TaskList: React.FC<TaskListProps> = ({
   onToggleComplete,
 }) => {
   const sortedTasks = [...tasks].sort((a, b) => {
-    if (a.completed && !b.completed) return 1; // Completed tasks at the bottom
+    if (a.completed && !b.completed) return 1;
     if (!a.completed && b.completed) return -1;
-    return a.priority.localeCompare(b.priority); // Sort by priority
+    return priorityOrder[b.priority] - priorityOrder[a.priority];
   });
 
   return (
