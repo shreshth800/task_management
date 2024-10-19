@@ -7,12 +7,16 @@ import "./globals.css";
 
 const loadTasksFromLocalStorage = (): Task[] => {
   const tasks: Task[] = [];
-  Object.keys(localStorage).forEach((key) => {
-    if (key.startsWith("task_")) {
-      const task = localStorage.getItem(key);
-      if (task) tasks.push(JSON.parse(task));
-    }
-  });
+
+  if (typeof window !== "undefined") {
+    Object.keys(localStorage).forEach((key) => {
+      if (key.startsWith("task_")) {
+        const task = localStorage.getItem(key);
+        if (task) tasks.push(JSON.parse(task));
+      }
+    });
+  }
+
   return tasks;
 };
 
